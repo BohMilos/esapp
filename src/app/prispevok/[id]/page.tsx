@@ -5,11 +5,11 @@ import  Container  from "@mui/material/Container";
 
 export const metadata = { title: "Detail príspevku | SnapZoška" };
 
-export default function PostDetail() {
+export default function PostDetail(postDetail.id) {
 
   return(
     <Container>
-      <Typography>Detail príspevku</Typography>
+      <Typography>Detail príspevku {postDetail.id} </Typography>
     </Container>
   );
 }
