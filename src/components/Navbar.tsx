@@ -4,11 +4,9 @@
 import React from 'react';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
-import SearchIcon from '@mui/icons-material/Search';
-import AddBoxIcon from '@mui/icons-material/AddBox';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import PersonIcon from '@mui/icons-material/Person';
 import Link from 'next/link';
+import { AddCircle, AppRegistration, Login } from '@mui/icons-material';
 
 const Navbar = () => {
     const [value, setValue] = React.useState(0);
@@ -25,35 +23,37 @@ const Navbar = () => {
             sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
         >
             <BottomNavigationAction
-                label="Home"
+                label="Domov"
                 icon={<HomeIcon />}
                 component={Link}
                 href="/"
             />
+
             <BottomNavigationAction
-                label="Search"
-                icon={<SearchIcon />}
-                component={Link}
-                href="/hladanie"
-            />
-            <BottomNavigationAction
-                label="Add"
-                icon={<AddBoxIcon />}
-                component={Link}
-                href="/pridat"
-            />
-            <BottomNavigationAction
-                label="Notifications"
-                icon={<NotificationsIcon />}
-                component={Link}
-                href="/notifikacie"
-            />
-            <BottomNavigationAction
-                label="Profile"
+                label="Profily"
                 icon={<PersonIcon />}
                 component={Link}
                 href="/profil"
             />
+            <BottomNavigationAction
+                label="Príspevky"
+                icon={<AddCircle />}
+                component={Link}
+                href="/prispevok"
+            />
+            <BottomNavigationAction
+                label="Prihlásenie"
+                icon={<Login />}
+                component={Link}
+                href="/auth/prihlasenie"
+            />
+            <BottomNavigationAction
+                label="Registrácia"
+                icon={<AppRegistration />}
+                component={Link}
+                href="/auth/registracia"
+            />
+
         </BottomNavigation>
     );
 };
