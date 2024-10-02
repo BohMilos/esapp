@@ -5,11 +5,11 @@ import  Container  from "@mui/material/Container";
 
 export const metadata = { title: "Detail profilu | SnapZoška" };
 
-export default function ProfilDetail() {
+export default function ProfilDetail({params} : {params : {id : string}}) {
 
   return(
     <Container>
-      <Typography>Detail profilu</Typography>
+      <Typography>Detail profilu {params.id}</Typography>
     </Container>
   );
 }
