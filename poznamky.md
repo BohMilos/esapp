@@ -9,4 +9,5 @@ git branch -m <name> - vytvorí branch
 git config --global user.name "meno" – nastaví meno pre git
 git config --global user.email "email" – nastaví email pre git
 git remote add origin https://github.com/username/repositoryname.git – nahodí do github repository
-find . -path ./node_modules -prune -o -path ./.next -prune -o -path ./.git -prune -o -print
+/*find . -path ./node_modules -prune -o -path ./.next -prune -o -path ./.git -prune -o -print*/
+find . -type d \( -name 'node_modules' -o -name '.next' -o -name '.git' \) -prune -o -print
