@@ -1,61 +1,77 @@
-// src/components/Navbar.tsx
+
+// /src/components/Navbar.tsx
+
 "use client";
 
-import React from 'react';
-import { BottomNavigation, BottomNavigationAction } from '@mui/material';
+import * as React from 'react';
+import { BottomNavigation, BottomNavigationAction, Box, Avatar } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
-import PersonIcon from '@mui/icons-material/Person';
-import Link from 'next/link';
-import { AddCircle, AppRegistration, Login } from '@mui/icons-material';
+import SearchIcon from '@mui/icons-material/Search';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import LoginIcon from '@mui/icons-material/Login';
+import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useRouter } from 'next/navigation';
+import { useSession } from "next-auth/react";
 
-const Navbar = () => {
-    const [value, setValue] = React.useState(0);
+export default function Navbar() {
+  const [value, setValue] = React.useState('/');
+  const router = useRouter();
+  const { data: session, status } = useSession();
 
-    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-        setValue(newValue);
-    };
+  const handleNavigation = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+    router.push(newValue);
+  };
 
-    return (
-        <BottomNavigation
-            value={value}
-            onChange={handleChange}
-            showLabels
-            sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
-        >
-            <BottomNavigationAction
-                label="Domov"
-                icon={<HomeIcon />}
-                component={Link}
-                href="/"
-            />
+  // Non-authenticated navigation paths
+  const nonAuthPaths = [
+    { label: "Domov", value: "/", icon: <HomeIcon /> },
+    { label: "Prispevky", value: "/prispevok", icon: <AddCircleIcon /> },
+    { label: "Registrácia", value: "/auth/registracia", icon: <AppRegistrationIcon /> },
+    { label: "Prihlásenie", value: "/auth/prihlasenie", icon: <LoginIcon /> }
+  ];
 
-            <BottomNavigationAction
-                label="Profily"
-                icon={<PersonIcon />}
-                component={Link}
-                href="/profil"
-            />
-            <BottomNavigationAction
-                label="Príspevky"
-                icon={<AddCircle />}
-                component={Link}
-                href="/prispevok"
-            />
-            <BottomNavigationAction
-                label="Prihlásenie"
-                icon={<Login />}
-                component={Link}
-                href="/auth/prihlasenie"
-            />
-            <BottomNavigationAction
-                label="Registrácia"
-                icon={<AppRegistration />}
-                component={Link}
-                href="/auth/registracia"
-            />
+  // Authenticated navigation paths
+  const authPaths = [
+    { label: "Domov", value: "/", icon: <HomeIcon /> },
+    { label: "Hľadať", value: "/search", icon: <SearchIcon /> },
+    { label: "Pridať", value: "/add", icon: <AddCircleIcon /> },
+    {
+      label: "Profil",
+      value: "/profil",
+      icon: session?.user?.image ? (
+        <Avatar 
+          alt={session?.user?.name || "User"} 
+          src={session?.user?.image || undefined} 
+        />
+      ) : (
+        <Avatar>{session?.user?.name?.charAt(0) || "U"}</Avatar>
+      )
+    },
+    { label: "Odhlásiť", value: "/auth/odhlasenie", icon: <LogoutIcon /> },
+  ];
 
-        </BottomNavigation>
-    );
-};
+  // Decide which paths to use based on authentication status
+  const navigationPaths = status === "authenticated" ? authPaths : nonAuthPaths;
 
-export default Navbar;
+  return (
+    <Box sx={{ width: '100%', position: 'fixed', bottom: 0 }}>
+      <BottomNavigation
+        showLabels
+        value={value}
+        onChange={handleNavigation}
+      >
+        {navigationPaths.map((path) => (
+          <BottomNavigationAction
+            key={path.value}
+            label={path.label}
+            value={path.value}
+            icon={path.icon}
+          />
+        ))}
+      </BottomNavigation>
+    </Box>
+  );
+}
+
