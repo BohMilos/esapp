@@ -2,8 +2,7 @@
 "use client";
 import React from "react";
 import { Session } from "next-auth";
-import { Typography, Container, Button } from "@mui/material";
-import { signOut } from "next-auth/react";
+import { Typography, Container} from "@mui/material";
 
 interface AuthHomeViewProps {
   session: Session;
@@ -19,17 +18,6 @@ const AuthHomeView: React.FC<AuthHomeViewProps> = ({ session }) => {
       <Typography variant="body1" gutterBottom>
         This is your feed. Check out the latest posts from your connections.
       </Typography>
-
-      {/* Sign Out Button */}
-      <Button
-        variant="outlined"
-        color="primary"
-        onClick={() => signOut()}
-        style={{ marginTop: "1.5rem" }}
-      >
-        Odhlásiť
-      </Button>
-
       {/* Additional UI components like feed, stories, etc., can go here */}
     </Container>
   );
