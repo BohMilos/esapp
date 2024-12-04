@@ -2,7 +2,6 @@
 
 import Typography from "@mui/material/Typography";
 import  Container  from "@mui/material/Container";
-import AuthGuardian from "@/components/AuthGuardian";
 
 export const metadata = { title: "Zoznam profilov | SnapZoška" };
 

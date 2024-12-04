@@ -3,7 +3,6 @@
 import React from "react";
 import { Session } from "next-auth";
 import { Typography, Container} from "@mui/material";
-import AuthGuardian from "@/components/AuthGuardian";
 
 interface AuthHomeViewProps {
   session: Session;
