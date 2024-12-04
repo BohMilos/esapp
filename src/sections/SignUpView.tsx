@@ -6,6 +6,8 @@ import {
   Button,
   //Checkbox,
   Container,
+  Link,
+  ThemeProvider,
   //FormControlLabel,
   //TextField,
   Typography,
@@ -13,7 +15,8 @@ import {
 } from "@mui/material";
 import { signIn } from "next-auth/react";
 import GoogleIcon from "@mui/icons-material/Google";
-//import FacebookIcon from "@mui/icons-material/Facebook";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import { githubTheme, googleTheme, theme } from "../components/ThemeProvider";
 
 export default function SignUpView() {
   return (
@@ -23,90 +26,48 @@ export default function SignUpView() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        mt: 5,
+        mt: 35,
         p: 3,
         bgcolor: "background.paper",
         boxShadow: 3,
         borderRadius: 2,
+        textUnderline: "none"
       }}
     >
-      {/* Logo / Title */}
-      <Typography variant="h5" sx={{ mb: 3 }}>
+      <Typography variant="h5" sx={{ mb: 5 }}>
         Registrácia
       </Typography>
 
-      {/* Sign-in link */}
-      <Typography variant="body1" sx={{ mb: 6 }}>
-        Už máte účet? <a href="(public)/auth/prihlasenie">Prihláste sa</a>
+      <ThemeProvider theme = {googleTheme}>
+        <Button
+          variant="contained"
+          fullWidth
+          startIcon={<GoogleIcon />}
+          onClick={() => signIn("google")}
+          sx={{ mb: 1 }}
+          color = "primary"
+        >
+          Registrovať sa účtom Google
+        </Button>
+      </ThemeProvider>
+
+      <ThemeProvider theme = {githubTheme}>
+        <Button
+           variant="contained"
+           fullWidth
+           startIcon={<GitHubIcon />}
+           //onClick={() => signIn("github")}
+           sx={{ mb: 4 }}
+           color = "secondary"
+         >
+           Registrovať sa účtom GitHub
+        </Button>
+      </ThemeProvider>
+
+      <Typography variant="body1" sx={{ m: 1.5 }}>
+        Už máte účet? <ThemeProvider theme = {theme}><Link href="/auth/prihlasenie" color="primary" underline="none">Prihláste sa</Link></ThemeProvider>
       </Typography>
-
-      {/* Google Sign Up */}
-      <Button
-        variant="outlined"
-        fullWidth
-        startIcon={<GoogleIcon />}
-        onClick={() => signIn("google")}
-        sx={{ mb: 1 }}
-      >
-        Registrovať sa účtom Google
-      </Button>
-
 
     </Container>
   );
 }
-
-
-      // {/* Facebook Sign Up */}
-      // <Button
-      //   variant="outlined"
-      //   fullWidth
-      //   startIcon={<FacebookIcon />}
-      //   sx={{ mb: 4 }}
-      // >
-      //   Registrovať sa účtom Facebook
-      // </Button>
-
-      // {/* Divider */}
-      // <Divider sx={{ width: "100%", mb: 2 }}>
-      //   <Typography variant="body2">alebo</Typography>
-      // </Divider>
-
-      // {/* Email */}
-      // <TextField
-      //   margin="normal"
-      //   fullWidth
-      //   label="Email"
-      //   type="email"
-      //   variant="outlined"
-      //   required
-      //   defaultValue="your@email.com"
-      // />
-
-      // {/* Password */}
-      // <TextField
-      //   margin="normal"
-      //   fullWidth
-      //   label="Password"
-      //   type="password"
-      //   variant="outlined"
-      //   required
-      //   defaultValue="******"
-      // />
-
-      // {/* Checkbox */}
-      // <FormControlLabel
-      //   control={<Checkbox color="primary" />}
-      //   label="Chcem dostávať novinky na email"
-      //   sx={{ mt: 2 }}
-      // />
-
-      // {/* Sign Up Button */}
-      // <Button
-      //   variant="contained"
-      //   fullWidth
-      //   size="large"
-      //   sx={{ mt: 2, mb: 1 }}
-      // >
-      //   Registrovať
-      // </Button>
