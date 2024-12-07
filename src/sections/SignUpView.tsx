@@ -7,7 +7,6 @@ import {
   //Checkbox,
   Container,
   Link,
-  ThemeProvider,
   //FormControlLabel,
   //TextField,
   Typography,
@@ -16,7 +15,6 @@ import {
 import { signIn } from "next-auth/react";
 import GoogleIcon from "@mui/icons-material/Google";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { githubTheme, googleTheme, theme } from "../components/ThemeProvider";
 
 export default function SignUpView() {
   return (
@@ -38,36 +36,44 @@ export default function SignUpView() {
         Registrácia
       </Typography>
 
-      <ThemeProvider theme = {googleTheme}>
         <Button
           variant="contained"
           fullWidth
           startIcon={<GoogleIcon />}
           onClick={() => signIn("google")}
-          sx={{ mb: 1 }}
-          color = "primary"
+          sx={{
+            mb: 1,
+            textTransform: "none",
+            "&:hover": {
+              bgcolor: "#4285F4",
+              color: "white",
+            },
+           }}
         >
           Registrovať sa účtom Google
         </Button>
-      </ThemeProvider>
 
-      <ThemeProvider theme = {githubTheme}>
         <Button
            variant="contained"
            fullWidth
            startIcon={<GitHubIcon />}
            //onClick={() => signIn("github")}
-           sx={{ mb: 4 }}
-           color = "secondary"
+           sx={{
+            mb: 1,
+            bgcolor: "#333",
+            color: "white",
+            '&:hover': {
+              bgcolor: "#444",
+            },
+            textTransform: "none",
+          }}
          >
            Registrovať sa účtom GitHub
         </Button>
-      </ThemeProvider>
 
       <Typography variant="body1" sx={{ m: 1.5 }}>
-        Už máte účet? <ThemeProvider theme = {theme}><Link href="/auth/prihlasenie" color="primary" underline="none">Prihláste sa</Link></ThemeProvider>
+        Už máte účet? <Link href="/auth/prihlasenie" color="primary" underline="none">Prihláste sa</Link>
       </Typography>
-
     </Container>
   );
 }

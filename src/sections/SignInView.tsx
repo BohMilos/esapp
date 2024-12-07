@@ -6,7 +6,6 @@ import {
     Button,
     //Checkbox,
     Container,
-    ThemeProvider,
     //FormControlLabel,
     //TextField,
     Typography,
@@ -15,7 +14,7 @@ import {
   import { signIn } from "next-auth/react";
   import GoogleIcon from "@mui/icons-material/Google";
   import GitHubIcon from '@mui/icons-material/GitHub';
-import { githubTheme, googleTheme } from "../components/ThemeProvider";
+
 
 export default function SignInView() {
   return (
@@ -36,31 +35,40 @@ export default function SignInView() {
         Prihlásenie
       </Typography>
 
-      <ThemeProvider theme = {googleTheme}>
         <Button
           variant="contained"
           fullWidth
           startIcon={<GoogleIcon />}
           onClick={() => signIn("google")}
-          sx={{ mb: 1 }}
-          color = "primary"
+          sx={{
+             mb: 1,
+             textTransform: "none",
+             "&:hover": {
+               bgcolor: "#4285F4",
+               color: "white",
+             },
+            }}
         >
           Prihlásiť sa účtom Google
         </Button>
-      </ThemeProvider>
 
-      <ThemeProvider theme = {githubTheme}>
         <Button
            variant="contained"
            fullWidth
            startIcon={<GitHubIcon />}
            //onClick={() => signIn("github")}
-           sx={{ mb: 4 }}
-           color = "secondary"
+           sx={{
+            mb: 1,
+            bgcolor: "#333",
+            color: "white",
+            '&:hover': {
+              bgcolor: "#444",
+            },
+            textTransform: "none",
+          }}
          >
            Prihlásiť sa účtom GitHub
         </Button>
-      </ThemeProvider>
     </Container>
   );
 }

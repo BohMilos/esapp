@@ -4,9 +4,7 @@ import { Metadata } from "next";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import AuthProvider from "../components/AuthProvider";
-import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "../components/ThemeProvider";
-import { CssBaseline } from "@mui/material";
+import ThemeProvider from "../components/ThemeProvider";
 
 
 export const metadata: Metadata = {
@@ -21,10 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sk">
-      <ThemeProvider theme={theme}>
+      <ThemeProvider>
       <body>
         <AuthProvider>
-          <CssBaseline />
           {children}
           <Navbar />
         </AuthProvider>
