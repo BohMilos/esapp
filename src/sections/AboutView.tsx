@@ -14,13 +14,13 @@ export default function AboutView(){
         <Typography variant="body1" gutterBottom>
           Vitajte na stránke SnapZoška!
         </Typography>
-        <Typography variant="body1" sx={{ m: 1.5 }}>
+        <Typography variant="body1" sx={{ m: 1.5, fontStyle: "italic" }}>
             <Link href="#" underline="hover">Naša škola</Link>
         </Typography>
-        <Typography variant="body1" sx={{ m: 1.5 }}>
+        <Typography variant="body1" sx={{ m: 1.5, fontStyle: "italic" }}>
             <Link href="#" underline="hover">Facebook</Link>
         </Typography>
-        <Typography variant="body1" sx={{ m: 1.5 }}>
+        <Typography variant="body1" sx={{ m: 1.5, fontStyle: "italic" }}>
             <Link href="#" underline="hover">Instagram</Link>
         </Typography>
       </Container>

@@ -25,7 +25,7 @@ export default function SignInView() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        mt: 35,
+        mt: 40,
         p: 3,
         bgcolor: "background.paper",
         boxShadow: 3,
@@ -37,8 +37,8 @@ export default function SignInView() {
         Prihlásenie
       </Typography>
 
-      <Typography variant="body1" sx={{ m: 2.5 }}>
-        Ešte nemáte účet? <Link href="/auth/registracia" underline="hover"> Registrujte sa </Link>
+      <Typography variant="body1" sx={{ m: 2.5, mb: 5 }}>
+        Ešte nemáte účet? <Link href="/auth/registracia" underline="hover" sx={{ fontStyle: "italic" }}> Registrujte sa </Link>
       </Typography>
 
         <Button

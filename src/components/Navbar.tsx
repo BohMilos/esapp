@@ -78,7 +78,7 @@ export default function Navbar() {
       </BottomNavigation>
       <IconButton
         onClick={toggleTheme}
-        sx={{ position: "absolute", top: 10, right: 10 }}
+        sx={{ position: "absolute", top: -840, right: 10 }}
       >
         {isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}
       </IconButton>

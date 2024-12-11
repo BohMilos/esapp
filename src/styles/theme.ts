@@ -2,7 +2,7 @@ import { createTheme } from '@mui/material/styles';
 // Define the light theme palette
 const lightPalette = {
     primary: {
-        main: "#add8e6",
+        main: "#0000ff",
       },
       secondary: {
         main: "#dc004e",
@@ -31,7 +31,7 @@ const lightPalette = {
 // Define the dark theme palette (slightly lighter dark colors)
 const darkPalette = {
   primary: {
-    main: "#ffc0cb",
+    main: "#add8e6",
   },
   secondary: {
     main: "#dc004e",
