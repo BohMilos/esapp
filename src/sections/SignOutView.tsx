@@ -23,7 +23,7 @@ export default function SignOutView() {
       <Typography variant="h5" sx={{ mb: 3 }}>
         Naozaj sa chcete odhlásiť?
       </Typography>
-      <Button variant="contained" onClick={() => signOut()} color="secondary">
+      <Button variant="contained" onClick={() => signOut()}>
         Odhlásiť sa
       </Button>
     </Container>
