@@ -15,13 +15,13 @@ export default function AboutView(){
           Vitajte na stránke SnapZoška!
         </Typography>
         <Typography variant="body1" sx={{ m: 1.5 }}>
-            <Link href="#">Naša škola</Link>
+            <Link href="#" underline="hover">Naša škola</Link>
         </Typography>
         <Typography variant="body1" sx={{ m: 1.5 }}>
-            <Link href="#">Facebook</Link>
+            <Link href="#" underline="hover">Facebook</Link>
         </Typography>
         <Typography variant="body1" sx={{ m: 1.5 }}>
-            <Link href="#">Instagram</Link>
+            <Link href="#" underline="hover">Instagram</Link>
         </Typography>
       </Container>
     )

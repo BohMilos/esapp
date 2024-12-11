@@ -37,11 +37,11 @@ export default function SignUpView() {
       </Typography>
 
       <Typography variant="body1" sx={{ m: 1.5 }}>
-        Už máte účet? <Link href="/auth/prihlasenie" color="primary" underline="none">Prihláste sa</Link>
+        Už máte účet? <Link href="/auth/prihlasenie" color="primary" underline="hover">Prihláste sa</Link>
       </Typography>
 
-      <Typography variant="body1" sx={{ m: 1.5 }}>
-        <Checkbox/> Súhlasím s <Link href="/gdpr" underline="none">GDPR</Link> a <Link href="/podmienky" underline="none">podmienkami používania</Link>
+      <Typography variant="body1" sx={{ m: 1.5, fontSize: 15 }}>
+        <Checkbox/> Súhlasím s <Link href="/gdpr" underline="hover">GDPR</Link> a <Link href="/podmienky" underline="hover">podmienkami používania</Link>
       </Typography>
 
       <Button

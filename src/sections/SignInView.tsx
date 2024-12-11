@@ -7,6 +7,7 @@ import {
     //Checkbox,
     Container,
     //FormControlLabel,
+    Link,
     //TextField,
     Typography,
     //Divider,
@@ -14,7 +15,6 @@ import {
   import { signIn } from "next-auth/react";
   import GoogleIcon from "@mui/icons-material/Google";
   import GitHubIcon from '@mui/icons-material/GitHub';
-import Link from "next/link";
 
 
 export default function SignInView() {
@@ -25,7 +25,7 @@ export default function SignInView() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        mt: 40,
+        mt: 35,
         p: 3,
         bgcolor: "background.paper",
         boxShadow: 3,
@@ -37,8 +37,8 @@ export default function SignInView() {
         Prihlásenie
       </Typography>
 
-      <Typography variant="body1" sx={{ m: 1.5 }}>
-        Ešte nemáte účet? <Link href="/auth/registracia" /*underline="none"*/>Registrujte sa</Link>
+      <Typography variant="body1" sx={{ m: 2.5 }}>
+        Ešte nemáte účet? <Link href="/auth/registracia" underline="hover"> Registrujte sa </Link>
       </Typography>
 
         <Button

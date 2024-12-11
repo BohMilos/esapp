@@ -30,7 +30,7 @@ export default function GdprView(){
         <Typography variant="body1" sx={{ m: 1.5 }}>
             Ďakujeme, že dodržiavate podmienky používania našej aplikácie.
         </Typography>
-        <Button variant="contained" href="/auth/registracia" startIcon={<ArrowBackIcon/> }>
+        <Button variant="outlined" href="/auth/registracia" startIcon={<ArrowBackIcon/> }>
             Späť
         </Button>
       </Container>

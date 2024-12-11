@@ -30,7 +30,7 @@ export default function TCView(){
         <Typography variant="body1" sx={{ m: 1.5 }}>
             Viac informácií nájdete v našich Podmienkach používania.
         </Typography>
-        <Button variant="contained" href="/auth/registracia" startIcon={<ArrowBackIcon/>}>
+        <Button variant="outlined" href="/auth/registracia" startIcon={<ArrowBackIcon/>}>
             Späť
         </Button>
       </Container>
