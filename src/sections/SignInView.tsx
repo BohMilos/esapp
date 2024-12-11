@@ -14,6 +14,7 @@ import {
   import { signIn } from "next-auth/react";
   import GoogleIcon from "@mui/icons-material/Google";
   import GitHubIcon from '@mui/icons-material/GitHub';
+import Link from "next/link";
 
 
 export default function SignInView() {
@@ -29,10 +30,15 @@ export default function SignInView() {
         bgcolor: "background.paper",
         boxShadow: 3,
         borderRadius: 2,
+        textUnderline: "none"
       }}
     >
       <Typography variant="h5" sx={{ mb: 3 }}>
         Prihlásenie
+      </Typography>
+
+      <Typography variant="body1" sx={{ m: 1.5 }}>
+        Ešte nemáte účet? <Link href="/auth/registracia" /*underline="none"*/>Registrujte sa</Link>
       </Typography>
 
         <Button
