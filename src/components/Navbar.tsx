@@ -1,4 +1,3 @@
-
 // /src/components/Navbar.tsx
 
 "use client";
@@ -18,6 +17,7 @@ import { useRouter } from 'next/navigation';
 import { useSession } from "next-auth/react";
 import { useTheme } from '../components/ThemeProvider';
 
+// Main navigation component
 export default function Navbar() {
   const [value, setValue] = React.useState('/');
   const router = useRouter();
@@ -39,7 +39,7 @@ export default function Navbar() {
 
   // Authenticated navigation paths
   const authPaths = [
-    { label: "Domov", value: "/", icon: <HomeIcon /> },
+    { label: "Domov", value: "/prispevok", icon: <HomeIcon /> },
     { label: "Hľadať", value: "/hladanie", icon: <SearchIcon /> },
     { label: "Pridať", value: "/pridat", icon: <AddCircleIcon /> },
     {

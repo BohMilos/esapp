@@ -6,7 +6,6 @@ import  Container  from "@mui/material/Container";
 export const metadata = { title: "Zoznam komentárov | SnapZoška" };
 
 export default function CommentsList() {
-
   return(
     <Container>
       <Typography>Zoznam komentárov</Typography>

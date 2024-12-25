@@ -16,7 +16,7 @@ import {
   import GoogleIcon from "@mui/icons-material/Google";
   import GitHubIcon from '@mui/icons-material/GitHub';
 
-
+// This component renders the SignIn page
 export default function SignInView() {
   return (
     <Container
@@ -33,14 +33,18 @@ export default function SignInView() {
         textUnderline: "none"
       }}
     >
+
+      {/* Content of the SignIn page */}
       <Typography variant="h5" sx={{ mb: 3 }}>
         Prihlásenie
       </Typography>
 
+      {/* Don't have an account? Registration link */}
       <Typography variant="body1" sx={{ m: 2.5, mb: 5 }}>
         Ešte nemáte účet? <Link href="/auth/registracia" underline="hover" sx={{ fontStyle: "italic" }}> Registrujte sa </Link>
       </Typography>
 
+      {/* Google and GitHub login buttons */}
         <Button
           variant="contained"
           fullWidth

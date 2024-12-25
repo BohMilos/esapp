@@ -6,7 +6,6 @@ import  Container  from "@mui/material/Container";
 export const metadata = { title: "Hľadanie | SnapZoška" };
 
 export default function Search() {
-
   return(
       <Container>
         <Typography>Hľadanie</Typography>

@@ -8,17 +8,17 @@ interface AuthHomeViewProps {
   session: Session;
 }
 
+// This component renders the home page for authenticated users
 const AuthHomeView: React.FC<AuthHomeViewProps> = ({ session }) => {
   return (
     <Container>
+      {/* Content of the home page */}
       <Typography variant="h4" component="h1" gutterBottom>
         Welcome back, {session.user?.name}!
       </Typography>
-      {/* Display personalized content like feed, posts, etc. */}
       <Typography variant="body1" gutterBottom>
         This is your feed. Check out the latest posts from your connections.
       </Typography>
-      {/* Additional UI components like feed, stories, etc., can go here */}
     </Container>
   );
 };

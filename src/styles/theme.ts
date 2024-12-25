@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material/styles';
+
 // Define the light theme palette
 const lightPalette = {
     primary: {
@@ -28,6 +29,7 @@ const lightPalette = {
         },
     },
 };
+
 // Define the dark theme palette (slightly lighter dark colors)
 const darkPalette = {
   primary: {
@@ -58,6 +60,7 @@ const darkPalette = {
     },
 },
 };
+
 // Create the theme
 export const lightTheme = createTheme({
   palette: {
@@ -65,6 +68,7 @@ export const lightTheme = createTheme({
     ...lightPalette,
   },
 });
+
 export const darkTheme = createTheme({
   palette: {
     mode: 'dark',

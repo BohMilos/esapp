@@ -6,7 +6,6 @@ import  Container  from "@mui/material/Container";
 export const metadata = { title: "Komentár príspevku | SnapZoška" };
 
 export default function PostCommentDetail({params} : {params : {prispevokId : string, komentarId : string}}) {
-
   return(
     <Container>
       <Typography>Komentár {params.komentarId} príspevku {params.prispevokId} </Typography>
