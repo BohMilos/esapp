@@ -16,10 +16,6 @@ find . -type d \( -name 'node_modules' -o -name '.next' -o -name '.git' \) -prun
 NEXTAUTH_URL = http://localhost:3000/
 NEXTAUTH_SECRET = ag4r6re5a4v1a65g4e6ag54a6e54r6r84gae6haf4gb56a456fag4sa65g4
 
-pridat GITHUB do .env
-
-
-
 1. Vercel -> Storage:
     Neon -> Create -> Accept -> Region -> Frankfurt, Germany-(fra1) -> Connect
     in snap-zoska-4h-postgres:
@@ -47,4 +43,3 @@ pridat GITHUB do .env
     npx prisma migrate dev --name user-profile-added
     npx prisma generate
     npx prisma studio
-
