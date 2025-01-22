@@ -15,9 +15,16 @@ import {
 import { signIn } from "next-auth/react";
 import GoogleIcon from "@mui/icons-material/Google";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import React from "react";
 
 // This component renders the SignUp page
 export default function SignUpView() {
+  const [checked, setChecked] = React.useState(false);
+
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.checked);
+  };
+
   return (
     <Container
       maxWidth="xs"
@@ -46,7 +53,7 @@ export default function SignUpView() {
 
       {/* GDPR and Terms and Conditions checkbox */}
       <Typography variant="body1" sx={{ m: 1.5, fontSize: 15, mb: 4 }}>
-        <Checkbox/> Súhlasím s <Link href="/gdpr" underline="hover" sx={{ fontStyle: "italic" }}>GDPR</Link> a <Link href="/podmienky" underline="hover" sx={{ fontStyle: "italic" }}>podmienkami používania</Link>
+        <Checkbox checked={checked} onChange={handleCheckboxChange}/> Súhlasím s <Link href="/gdpr" underline="hover" sx={{ fontStyle: "italic" }}>GDPR</Link> a <Link href="/podmienky" underline="hover" sx={{ fontStyle: "italic" }}>podmienkami používania</Link>
       </Typography>
 
       {/* Google and GitHub registration buttons */}
@@ -62,6 +69,8 @@ export default function SignUpView() {
             bgcolor: "#4285F4",
             color: "white",
           },
+          pointerEvents: checked ? "auto" : "none",
+          opacity: checked ? 1 : 0.5,
          }}
       >
         Registrovať sa účtom Google
@@ -80,6 +89,8 @@ export default function SignUpView() {
             bgcolor: "#444",
           },
           textTransform: "none",
+          pointerEvents: checked ? "auto" : "none",
+          opacity: checked ? 1 : 0.5,
         }}
        >
          Registrovať sa účtom GitHub
