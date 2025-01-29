@@ -12,6 +12,10 @@ git config --global user.email "email" – nastaví email pre git
 git remote add origin https://github.com/username/repositoryname.git – nahodí do github repository
 /*find . -path ./node_modules -prune -o -path ./.next -prune -o -path ./.git -prune -o -print*/
 find . -type d \( -name 'node_modules' -o -name '.next' -o -name '.git' \) -prune -o -print
+// npx prisma migrate dev --name added_tables
+// npx prisma generate
+// npm install --save-dev tsx
+// npx tsx prisma/seedData/dbInject.ts
 
 NEXTAUTH_URL = http://localhost:3000/
 NEXTAUTH_SECRET = ag4r6re5a4v1a65g4e6ag54a6e54r6r84gae6haf4gb56a456fag4sa65g4

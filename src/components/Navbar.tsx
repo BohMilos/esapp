@@ -61,12 +61,14 @@ export default function Navbar() {
   const navigationPaths = status === "authenticated" ? authPaths : nonAuthPaths;
 
   return (
-    <Box sx={{ width: '100%', position: 'fixed', bottom: 0 }}>
+    <Box sx={{ width: "100%", position: "fixed", bottom: 0, display: "flex", justifyItems: "center"}}>
       <BottomNavigation
         showLabels
         value={value}
         onChange={handleNavigation}
+        sx={{flexGrow: 1}}
       >
+        
         {navigationPaths.map((path) => (
           <BottomNavigationAction
             key={path.value}
@@ -75,13 +77,18 @@ export default function Navbar() {
             icon={path.icon}
           />
         ))}
-      </BottomNavigation>
+
       <IconButton
         onClick={toggleTheme}
-        sx={{ position: "absolute", top: -840, right: 10 }}
+        sx={{    
+          position: "absolute",
+          top: "50%",
+          right: 16,
+          transform: "translateY(-50%)", }}
       >
         {isDarkMode ? <LightModeIcon /> : <DarkModeIcon />}
       </IconButton>
+      </BottomNavigation>
     </Box>
   );
 }
