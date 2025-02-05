@@ -14,17 +14,17 @@ export default function AboutView() {
 
       {/* Links to social media */}
       <Typography variant="body1" sx={{ m: 1.5, fontStyle: "italic" }}>
-        <Link href="https://zochova.sk" underline="hover">
+        <Link href="https://zochova.sk" target="_blank" underline="hover">
           Naša škola
         </Link>
       </Typography>
       <Typography variant="body1" sx={{ m: 1.5, fontStyle: "italic" }}>
-        <Link href="https://www.facebook.com/spsezochova/" underline="hover">
+        <Link href="https://www.facebook.com/spsezochova/" target="_blank" underline="hover">
           Facebook
         </Link>
       </Typography>
       <Typography variant="body1" sx={{ m: 1.5, fontStyle: "italic" }}>
-        <Link href="https://www.instagram.com/spsezochova/" underline="hover">
+        <Link href="https://www.instagram.com/spsezochova/" target="_blank" underline="hover">
           Instagram
         </Link>
       </Typography>

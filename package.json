@@ -23,6 +23,7 @@
     "next-auth": "^4.24.11",
     "react": "^18",
     "react-dom": "^18",
+    "react-router-dom": "^7.1.5",
     "snap": "^1.1.0",
     "tree": "^0.1.3"
   },

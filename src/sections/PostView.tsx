@@ -1,10 +1,9 @@
 // src/sections/PostView.tsx
 "use client";
 import React, { useEffect, useState } from "react";
-import { Post, User } from "@prisma/client";
+import { Post } from "@prisma/client";
 import { Card, CardMedia, CardActionArea, CardContent, Typography } from "@mui/material";
-import { fetchPosts} from "@/app/actions/posts";
-import { userAgent } from "next/server";
+import { fetchPosts } from "@/app/actions/posts";
 
 interface PostViewProps {
     post?: Post;
@@ -21,15 +20,13 @@ const PostView = () => {
             console.error("Error fetching posts:", error);
         }
     };
-
         loadPosts();
-        
     }, []);
 
     return (              
         posts.map((post) => (
-            <Card key={post.id} sx={{m: 2, width: "70%"}}>
-                <CardActionArea>
+            <Card key={post.id} sx={{m: 2, width: "70%", textUnderline: 'none'}}>
+                <CardActionArea href='/prispevok/${post.id}'>
                     <CardMedia
                         component="img"
                         height="200"
@@ -39,18 +36,13 @@ const PostView = () => {
                         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                             {post.caption}
                         </Typography>
-                        <Typography sx={{ mt: 1 }}>
-                            <img src={post.user.image} style={{ width: "30px", height: "30px", borderRadius: "50%"}}/> {post.user.name}
+                        <Typography sx={{ mt: 1, color: 'text.primary' }}>
+                            <img src={post.user.image} style={{ width: "30px", height: "30px", borderRadius: "50%" }}/> {post.user.name}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
             </Card>
         ))
-
     );
-
-
-
 }
-
 export default PostView
