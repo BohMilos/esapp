@@ -1,14 +1,14 @@
 // src/sections/SearchView.tsx
 "use client";
 import React, { useEffect, useState } from "react";
-import { Box, Card, CardActionArea, CardContent, FormControl, Typography } from "@mui/material";
+import { Box, Card, CardActionArea, CardContent, /*FormControl,*/ Typography } from "@mui/material";
 import { fetchUsers } from "@/app/actions/users";
 import { User } from "@prisma/client";
-//import Link from "next/link";
+//import Image from "next/image";
 
-interface SearchViewProps {
+/*interface SearchViewProps {
     user?: User;
-}
+}*/
 
 const SearchView = () => {
     const [users, setUsers] = useState<User[]>([]);
@@ -31,10 +31,8 @@ const SearchView = () => {
                     <CardActionArea href={`/profil/${user.id}`}>
                         <CardContent>
                             <Typography variant="body1" sx={{ color: "text.primary" }}>
-                                <img
-                                    src={user.image || "/default-avatar.png"}
-                                    style={{ width: "30px", height: "30px", borderRadius: "50%" }}
-                                /> {user.name}
+                                <img src={user.image} style={{ width: "30px", height: "30px", borderRadius: "50%" }} alt="avatar"/> {user.name}
+                                {/*<Image src = {user.image || "/default-avatar.png"} width={30} height ={30} style={{borderRadius : "50%"}} alt = "avatar"></Image> {user.name}*/}
                             </Typography>
                             <Typography variant="body2" sx={{ color: "text.secondary" }}>
                                 {/*user.profile.location*/}

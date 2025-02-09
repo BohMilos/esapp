@@ -11,7 +11,7 @@ export default function ProfilDetail({params} : {params : {id : string}}) {
   return(
     <Container>
       <Typography>Detail profilu {params.id}</Typography>
-      <Button variant="outlined" href="/prispevok" startIcon={<ArrowBackIcon/> }>
+      <Button variant="outlined" href="/hladanie" startIcon={<ArrowBackIcon/> }>
             Späť
       </Button>
     </Container>
