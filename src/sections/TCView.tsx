@@ -2,42 +2,127 @@
 
 "use client";
 
-import { Button, Container, Typography } from "@mui/material";
+import { Button, Container, Typography, Paper, Box, Divider } from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 // This component renders the Terms and Conditions page
 export default function TCView(){
     return (
-        <Container>
-        {/* Content of the Terms and Conditions page */}
-        <Typography variant="h4" component="h1" gutterBottom>
-            Podmienky používania
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-            Tieto podmienky upravujú používanie aplikácie SnapZoška. Pred použitím našej aplikácie si prosím dôkladne prečítajte tieto podmienky.
-        </Typography>
+        <Container maxWidth="md" sx={{ py: 4 }}>
+            <Paper 
+                elevation={0} 
+                sx={{ 
+                    p: 4, 
+                    borderRadius: 2,
+                    border: '1px solid',
+                    borderColor: 'divider',
+                }}
+            >
+                {/* Header */}
+                <Typography 
+                    variant="h4" 
+                    component="h1" 
+                    gutterBottom
+                    sx={{ 
+                        fontWeight: 'bold',
+                        mb: 3,
+                    }}
+                >
+                    Podmienky používania
+                </Typography>
+                
+                <Typography 
+                    variant="body1" 
+                    sx={{ 
+                        mb: 4,
+                        color: 'text.secondary',
+                        fontSize: '1.1rem',
+                    }}
+                >
+                    Tieto podmienky upravujú používanie aplikácie SnapZoška. Pred použitím našej aplikácie si prosím dôkladne prečítajte tieto podmienky.
+                </Typography>
 
-        <Typography variant="h6" sx={{ mt: 1.5, fontWeight: "bold" }}>
-            Používanie aplikácie
-        </Typography>
-        <Typography variant="body1" sx={{ m: 1.5 }}>
-            Užívateľ sa zaväzuje používať aplikáciu v súlade so zákonmi a dobrými mravmi.
-        </Typography>
+                <Divider sx={{ my: 3 }} />
 
-        <Typography variant="h6" sx={{ mt: 1.5, fontWeight: "bold" }}>
-            Ochrana údajov
-        </Typography>
-        <Typography variant="body1" sx={{ m: 1.5 }}>
-            Vaše údaje sú spracovávané v súlade s našimi zásadami ochrany osobných údajov.
-        </Typography>
-        <Typography variant="body1" sx={{ m: 3, ml: 1.5 }}>
-            Viac informácií nájdete v našich Podmienkach používania.
-        </Typography>
+                {/* Sections */}
+                <Box sx={{ mb: 4 }}>
+                    <Typography 
+                        variant="h5" 
+                        sx={{ 
+                            fontWeight: "bold",
+                            mb: 2,
+                            color: 'primary.main',
+                        }}
+                    >
+                        Používanie aplikácie
+                    </Typography>
+                    <Typography 
+                        variant="body1" 
+                        sx={{ 
+                            ml: 2,
+                            fontSize: '1rem',
+                            lineHeight: 1.7,
+                        }}
+                    >
+                        Užívateľ sa zaväzuje používať aplikáciu v súlade so zákonmi a dobrými mravmi.
+                    </Typography>
+                </Box>
 
-        {/* Button to go back */}
-        <Button variant="outlined" href="/auth/registracia" startIcon={<ArrowBackIcon/>}>
-            Späť
-        </Button>
-      </Container>
-    )
+                <Box sx={{ mb: 4 }}>
+                    <Typography 
+                        variant="h5" 
+                        sx={{ 
+                            fontWeight: "bold",
+                            mb: 2,
+                            color: 'primary.main',
+                        }}
+                    >
+                        Ochrana údajov
+                    </Typography>
+                    <Typography 
+                        variant="body1" 
+                        sx={{ 
+                            ml: 2,
+                            fontSize: '1rem',
+                            lineHeight: 1.7,
+                        }}
+                    >
+                        Vaše údaje sú spracovávané v súlade s našimi zásadami ochrany osobných údajov.
+                    </Typography>
+                </Box>
+
+                <Divider sx={{ my: 3 }} />
+
+                {/* Footer note */}
+                <Typography 
+                    variant="body1" 
+                    sx={{ 
+                        my: 4,
+                        fontStyle: 'italic',
+                        color: 'text.secondary',
+                        textAlign: 'center',
+                    }}
+                >
+                    Viac informácií nájdete v našich Podmienkach používania.
+                </Typography>
+
+                {/* Back button */}
+                <Box sx={{ mt: 4, display: 'flex', justifyContent: 'flex-start' }}>
+                    <Button 
+                        variant="outlined" 
+                        href="/auth/registracia" 
+                        startIcon={<ArrowBackIcon/>}
+                        size="large"
+                        sx={{ 
+                            borderRadius: 2,
+                            textTransform: 'none',
+                            px: 4,
+                        }}
+                    >
+                        Späť
+                    </Button>
+                </Box>
+            </Paper>
+        </Container>
+    );
 }
