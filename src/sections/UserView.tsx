@@ -20,6 +20,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import SettingsIcon from '@mui/icons-material/Settings';
 import GridViewIcon from '@mui/icons-material/GridView';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import Image from "next/image";
 
 interface PostWithUser extends Post {
     user: User;
@@ -173,7 +174,7 @@ export default function ProfileView() {
                                             },
                                         }}
                                     >
-                                        <img
+                                        <Image
                                             src={post.imageUrl}
                                             alt={post.caption || 'Post image'}
                                             loading="lazy"
