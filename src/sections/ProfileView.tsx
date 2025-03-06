@@ -6,7 +6,6 @@ import {
     Box,
     Avatar,
     Typography,
-    Grid,
     Paper,
     Divider,
     Stack,
@@ -15,7 +14,7 @@ import {
     ImageListItem,
 } from "@mui/material";
 import { useSession } from "next-auth/react";
-import { Post, User, Profile } from "@prisma/client";
+import { Post, User } from "@prisma/client";
 import { fetchPostsByUserId } from "@/app/actions/posts";
 import EditIcon from '@mui/icons-material/Edit';
 import SettingsIcon from '@mui/icons-material/Settings';
