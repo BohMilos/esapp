@@ -1,9 +1,9 @@
-// src/app/(public)/auth/prihlasenie/page.tsx
+// src/app/auth/prihlasenie/page.tsx
 
-import SignInView from "@/sections/SignInView";
+import SignInView from "@/views/SignInView";
 
 export const metadata = { title: "Prihlásenie užívateľa | SnapZoška" };
 
 export default function SignInPage() {
-  return <SignInView/>;
+  return <SignInView />;
 }

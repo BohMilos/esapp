@@ -1,14 +1,35 @@
 // src/app/(private)/pridat/page.tsx
 
-import Typography from "@mui/material/Typography";
-import  Container  from "@mui/material/Container";
+import NewPostForm from "@/components/NewPostForm";
+import { Typography, Box, Container } from "@mui/material";
 
-export const metadata = { title: "Pridať | SnapZoška" };
+export const metadata = {
+  title: "Nový príspevok | SnapZoška",
+};
 
-export default function Add() {
-  return(
-      <Container>
-        <Typography>Pridať</Typography>
-      </Container>
+export default function NewPostPage() {
+  return (
+    <Container
+      maxWidth="sm"
+      sx={{
+        mt: 4,
+        mb: 8,
+        padding: 2,
+      }}>
+      <Box
+        sx={{
+          textAlign: "center",
+          marginBottom: 4,
+        }}>
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: "bold",
+          }}>
+          Vytvoriť nový príspevok
+        </Typography>
+      </Box>
+      <NewPostForm />
+    </Container>
   );
 }

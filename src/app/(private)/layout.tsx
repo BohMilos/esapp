@@ -1,20 +1,14 @@
-// src/app/private/layout.tsx
+// src/app/(private)/layout.tsx
 
-import { ReactNode } from "react";
-import AuthGuardian from "@/components/AuthGuardian"; // Import the custom authentication guard component
+import AuthGuard from "@/components/AuthGuard";
 
-// Define the props for the PrivateLayout component
-interface PrivateLayoutProps {
-  children: ReactNode; // The content to be displayed within the layout
+export const metadata = { title: "SnapZoška",
+  description: "Created by students of SPŠE Zochova 9, Bratislava"};
+
+export default function PrivateLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <AuthGuard>{children}</AuthGuard>;
 }
-
-// PrivateLayout component that wraps its children with the AuthGuardian component
-const PrivateLayout: React.FC<PrivateLayoutProps> = ({ children }) => {
-  return (
-    // Render the AuthGuardian component to protect child components
-    <AuthGuardian>
-      {children}
-    </AuthGuardian>
-  );
-};
-export default PrivateLayout; // Export the PrivateLayout component as the default export

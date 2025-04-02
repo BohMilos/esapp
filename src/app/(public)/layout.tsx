@@ -1,22 +1,23 @@
-// src/app/public/layout.tsx
+// src/app/(public)/layout.tsx
 
-// Public layout component
-import { ReactNode } from "react";
-import Navbar from "@/components/Navbar"; // Simple navbar for public pages
+import { Box } from "@mui/material";
 
-interface PublicLayoutProps {
-  // Content of the page
-  children: ReactNode;
-}
-
-const PublicLayout: React.FC<PublicLayoutProps> = ({ children }) => {
+export default function PublicLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-      <main>
-        {/* Render the content of the page */}
-        {children}
-        {/* Render the navbar at the bottom of the page */}
-        <Navbar />
-      </main>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "background.default",
+        px: 2,
+      }}>
+      {children}
+    </Box>
   );
-};
-export default PublicLayout;
+}

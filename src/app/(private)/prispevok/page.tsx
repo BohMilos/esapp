@@ -1,26 +1,75 @@
 // src/app/(private)/prispevok/page.tsx
 
-import Typography from "@mui/material/Typography";
-import  Container  from "@mui/material/Container";
-import PostView from "@/sections/PostView";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
+import NextLink from "next/link";
 
-const session = await getServerSession(authOptions);
+import { Link as MuiLink } from "@mui/material";
+import { Container, Typography, Box } from "@mui/material";
+
+import { prisma } from "@/app/api/auth/[...nextauth]/prisma";
+import { Post } from "@/types/post";
+import PostCard from "@/components/PostCard";
 
 export const metadata = { title: "Príspevky | SnapZoška" };
 
-export default function PostPage() {
-  return(
-    <Container>
-      <Typography variant="h3" gutterBottom>
-        Vitajte, {session?.user?.name}!
-      </Typography>
-      <Typography variant="body1" gutterBottom sx={{ mb: 5, fontSize: 20 }}>
-          Toto sú najnovšie príspevky.
-      </Typography>
-      <PostView/>
-    </Container>
+export default async function FeedPage() {
+  const posts: Post[] = await prisma.post.findMany({
+    orderBy: { createdAt: "desc" },
+    include: { user: true, images: true, likes: true },
+  });
 
+  return (
+    <Container sx={{ mt: 5 }}>
+      <Typography
+        variant="h4"
+        sx={{
+          mb: 4,
+          fontWeight: "bold",
+          textAlign: "center",
+        }}>
+        Príspevky
+      </Typography>
+
+      {posts.length > 0 ? (
+        posts.map((post) => {
+          if (!post.user.name) {
+            return null; // Skip posts with null user.name
+          }
+          return (
+            <PostCard
+              key={post.id}
+              post={post}
+            />
+          );
+        }) // Každý príspevok je zobrazený pomocou PostCard
+      ) : (
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}>
+          <Typography
+            variant="h6"
+            sx={{
+              mb: 2,
+              fontWeight: "bold",
+              textAlign: "center",
+              color: "text.secondary",
+            }}>
+            Žiadne príspevky na zobrazenie.
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ textAlign: "center", color: "text.primary" }}>
+            Buďte prvý, kto zdieľa príspevok!{" "}
+            <MuiLink
+              component={NextLink}
+              href="/pridat">
+              Create a new post
+            </MuiLink>
+          </Typography>
+        </Box>
+      )}
+    </Container>
   );
 }

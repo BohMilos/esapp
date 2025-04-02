@@ -1,14 +1,13 @@
-// src/app/(private)/profil/page.tsx
+// src/app/profil/page.tsx
 
-import  Container  from "@mui/material/Container";
-import UserView from "@/sections/UserView";
+import { Container, Typography } from "@mui/material";
 
-export const metadata = { title: "Váš profil | SnapZoška" };
+export const metadata = { title: 'Váš profil | SnapZoška' };
 
-export default function ProfilList() {
+export default function ProfileList() {
   return (
     <Container>
-      <UserView/>
+      <Typography>Profil</Typography>
     </Container>
   );
 }

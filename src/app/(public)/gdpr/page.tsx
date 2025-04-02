@@ -1,9 +1,9 @@
-// src/app/(public)/gdpr/page.tsx
+// src/app/gdpr/page.tsx
 
-import GdprView from "@/sections/GdprView";
+import GDPRView from "@/views/GDPRView";
 
-export const metadata = { title: "GDPR | SnapZoška" };
+export const metadata = { title: 'GDPR | SnapZoška' };
 
 export default function GDPR() {
-  return <GdprView/>
+    return <GDPRView />;
 }
