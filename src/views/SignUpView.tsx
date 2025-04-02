@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button, Container, Typography, Checkbox, FormControlLabel, Box, Link as MuiLink, Snackbar, Alert, Link } from "@mui/material";
-import NextLink from "next/link"; // Import next/link separately for routing
+import { Button, Container, Typography, Checkbox, Link, Snackbar, Alert} from "@mui/material";
 import { signIn } from "next-auth/react";
 import GoogleIcon from "@mui/icons-material/Google";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -93,7 +92,7 @@ export default function SignUpView() {
          variant="contained"
          fullWidth
          startIcon={<GitHubIcon />}
-         //onClick={handleGitHubSignUp}
+         onClick={handleGitHubSignUp}
          sx={{
           mb: 1,
           bgcolor: "#333",
