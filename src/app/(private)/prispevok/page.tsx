@@ -14,7 +14,7 @@ export const metadata = { title: "Príspevky | SnapZoška" };
 export default async function FeedPage() {
   const posts: Post[] = await prisma.post.findMany({
     orderBy: { createdAt: "desc" },
-    include: { user: true, images: true, likes: true },
+    include: { user: true, images: true, likes: true, comments: { include: { user: true } } }, // Include user and images in the posttrue },
   });
 
   return (

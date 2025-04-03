@@ -1,6 +1,7 @@
 // src/types/post.ts
 
 import { Like } from "./like";
+import { PostComment } from "./comment";
 
 export interface Post {
   id: string;
@@ -8,6 +9,7 @@ export interface Post {
   caption?: string | null;
   createdAt: Date;
   updatedAt: Date;
+  comments: PostComment[];
   likes: Like[];
   user: {
     name: string | null;

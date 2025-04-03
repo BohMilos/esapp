@@ -21,6 +21,8 @@ import Caption from "./post/Caption";
 import Carousel from "./post/Carousel";
 import LikeButton from "./post/LikeButton";
 import Timestamp from "./post/Timestamp";
+import CommentSection from "./post/CommentSection";
+import AddCommentForm from "./post/AddCommentForm";
 
 export default function PostCard({ post }: { post: Post }) {
   const { data: session } = useSession();
@@ -79,6 +81,10 @@ export default function PostCard({ post }: { post: Post }) {
           caption={post.caption || "Bez popisu"}
         />
         <Timestamp date={post.createdAt} />
+
+        <CommentSection comments = {post.comments} />
+
+        <AddCommentForm postId = {post.id} />
 
       </CardContent>
     </Card>
