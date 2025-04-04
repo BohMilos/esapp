@@ -5,7 +5,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { getSession } from "next-auth/react";
-import { Button, TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
+import SendIcon from '@mui/icons-material/Send';
 
 interface AddCommentFormProps {
     postId: string;
@@ -13,8 +14,8 @@ interface AddCommentFormProps {
 
 export default function AddCommentForm ({ postId }: AddCommentFormProps) {
     const [content, setContent] = useState<string>("");
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
+    const [/*loading*/, setLoading] = useState(false);
+    const [/*error*/, setError] = useState("");
     const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -42,7 +43,6 @@ export default function AddCommentForm ({ postId }: AddCommentFormProps) {
 
             const data = await response.json();
             if (response.ok) {
-                alert("Comment added successfully!");
                 setContent("");
                 router.refresh();
             } else {
@@ -57,17 +57,22 @@ export default function AddCommentForm ({ postId }: AddCommentFormProps) {
     };
 
     return (
+        <Box>
         <form onSubmit={handleSubmit}>
-            <TextField
-                label="Comment"
-                variant="outlined"
-                fullWidth
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-            />
-            <Button type="submit" variant="contained" color="primary">
-                Add Comment
-            </Button>
+            <Box display="flex" alignItems="center" justifyContent="space-between">
+                <TextField
+                    label="Comment"
+                    variant="outlined"
+                    fullWidth
+                    size="small"
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                />
+                <Button type="submit" variant="contained" color="primary" sx={{ ml: 2 }}>
+                    <SendIcon />
+                </Button>
+            </Box>
         </form>
+        </Box>
     );
 }

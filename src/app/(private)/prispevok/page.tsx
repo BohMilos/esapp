@@ -18,7 +18,7 @@ export default async function FeedPage() {
   });
 
   return (
-    <Container sx={{ mt: 5 }}>
+    <Container sx={{ mt: 5, pb: 10 }}>
       <Typography
         variant="h4"
         sx={{

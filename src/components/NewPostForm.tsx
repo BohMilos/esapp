@@ -57,10 +57,10 @@ export default function NewPostForm() {
 
       const data = await response.json();
       if (response.ok) {
-        alert("Post created successfully!");
         setCaption("");
         setImages([]);
         router.push("/prispevok");
+        router.refresh();
       } else {
         setError(data.message || "Failed to create post.");
       }
@@ -110,7 +110,7 @@ export default function NewPostForm() {
                 backgroundColor: "primary.light",
               },
             }}>
-            Upload Images
+            Nahrať obrázky
           </Button>
         </label>
         <Input
@@ -179,7 +179,7 @@ export default function NewPostForm() {
           fontWeight: 600,
         }}
         disabled={loading}>
-        {loading ? "Submitting..." : "Create Post"}
+        {loading ? "Submitting..." : "Vytvoriť príspevok"}
       </Button>
 
       {/* Error message */}

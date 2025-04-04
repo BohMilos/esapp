@@ -2,6 +2,8 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/app/api/auth/[...nextauth]/prisma";
+/*import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]/authOptions";*/
 
 export async function POST(req: NextRequest) {
   try {
@@ -26,6 +28,7 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json(newComment);
+
   } catch (error) {
     console.error("Error creating comment:", error);
     return NextResponse.json(
