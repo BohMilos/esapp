@@ -7,52 +7,61 @@ import { put } from "@vercel/blob";
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
-    const caption = formData.get("caption") as string;
-    const userId = formData.get("userId") as string;
+    const caption = formData.get("caption");
+    const userId = formData.get("userId");
 
-    if (!userId) {
+    // ✅ Type checking for inputs
+    if (typeof userId !== "string") {
       return NextResponse.json(
         { message: "User ID is required." },
         { status: 400 }
       );
     }
 
-    // Vytvorenie príspevku s prázdnym `tags`, bez likes/comments atď.
+    // ✅ Create the new post
     const newPost = await prisma.post.create({
       data: {
         userId,
-        caption: caption || "",
-        tags: [], // predvolené prázdne pole
+        caption: typeof caption === "string" ? caption : "",
+        tags: [], // Default empty tags
       },
     });
 
-    // Získanie obrázkov z formData (tu môžeme predpokladať, že obrázky sa spracujú neskôr)
-    const files = formData.getAll("images") as File[];
+    // ✅ Process and upload images
+    const files = formData.getAll("images").filter((file): file is File => file instanceof File);
     const imageRecords = [];
 
-    // Pre každý obrázok
     for (let i = 0; i < files.length; i++) {
       const image = files[i];
 
-      // Nahráme obrázok do Vercel Blob a získame URL
-      const fileBuffer = image.stream(); // Získame stream obrázka
-      const { url } = await put(image.name, fileBuffer, { access: "public" });
+      // ✅ Convert image to buffer and upload to Vercel Blob
+      const buffer = await image.arrayBuffer();
+      const { url } = await put(image.name, buffer, { access: "public" });
 
-      // Vytvoríme záznam v `PostImage` s URL obrázku
+      // ✅ Save image record to PostImage
       const postImage = await prisma.postImage.create({
         data: {
           postId: newPost.id,
-          imageUrl: url, // Ukladáme verejnú URL obrázku z Vercel Blob
-          order: i, // Poradie obrázka
+          imageUrl: url,
+          order: i,
         },
       });
+
       imageRecords.push(postImage);
     }
 
-    console.log("New Post Created: ", newPost);
-    console.log("Images associated with the post: ", imageRecords);
+    // ✅ Optionally return full post with images
+    const fullPost = await prisma.post.findUnique({
+      where: { id: newPost.id },
+      include: {
+        user: true,
+        images: true,
+        comments: { include: { user: true } },
+        likes: true,
+      },
+    });
 
-    return NextResponse.json({ post: newPost, images: imageRecords });
+    return NextResponse.json({ post: fullPost });
   } catch (error) {
     console.error("Error creating post:", error);
     return NextResponse.json(
@@ -61,3 +70,4 @@ export async function POST(req: NextRequest) {
     );
   }
 }
+

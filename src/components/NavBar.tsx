@@ -139,12 +139,6 @@ export default function Navbar() {
           </ListItemIcon>
           <ListItemText>Profil</ListItemText>
         </MenuItem>
-        <MenuItem onClick={() => handleNavigate('/auth/odhlasenie')}>
-          <ListItemIcon>
-            <LogoutIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText>Odhlásiť</ListItemText>
-        </MenuItem>
         <Divider />
         <MenuItem
           onClick={() => {
@@ -162,6 +156,13 @@ export default function Navbar() {
           <ListItemText>
             {isDarkMode ? 'Svetlý režim' : 'Tmavý režim'}
           </ListItemText>
+        </MenuItem>
+        <Divider />
+        <MenuItem onClick={() => handleNavigate('/auth/odhlasenie')}>
+          <ListItemIcon>
+            <LogoutIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText>Odhlásiť</ListItemText>
         </MenuItem>
       </Menu>
     </Box>
