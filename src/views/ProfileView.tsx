@@ -24,8 +24,8 @@ export default function ProfileView() {
   const { data: session } = useSession();
   const [value, setValue] = useState(0);
   const [stats, setStats] = useState({ posts: 0, followers: 0, following: 0 });
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [bookmarks, setBookmarks] = useState<Post[]>([]);
+  const [posts, /*setPosts*/] = useState<Post[]>([]);
+  const [bookmarks, /*setBookmarks*/] = useState<Post[]>([]);
   const [bio, setBio] = useState("");
   const [location, setLocation] = useState("");
 
